@@ -1,0 +1,78 @@
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:disabled {
+    background-color: #9E9E9E;
+    cursor: not-allowed;
+}
+
+.login-button:hover:enabled {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: #ff0000;
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.text-link {
+    margin-top: 15px;
+    text-align: center;
+    color: #0066cc;
+    cursor: pointer;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .input-field {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .login-button {
+        font-size: 14px;
+    }
+
+    .error-message {
+        font-size: 12px;
+    }
+}

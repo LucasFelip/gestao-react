@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';  // Verifique o caminho aqui
+import Navbar from '../components/Navbar';
+import CategoriaList from '../components/CategoriaList';
+import './HomePage.css';
 
 function HomePage() {
     const [username, setUsername] = useState('');
@@ -15,7 +17,7 @@ function HomePage() {
                 });
 
                 if (response.ok) {
-                    const data = await response.text();  // Assume que o backend retorna o nome como texto
+                    const data = await response.text();
                     setUsername(data);
                 } else {
                     console.error('Erro ao buscar o nome do usuário');
@@ -26,15 +28,19 @@ function HomePage() {
         };
 
         fetchUsername();
-    }, []);  // Executa uma vez após a montagem do componente
+    }, []);
 
     return (
         <div>
-            <Navbar />  {/* Inclui a navbar no topo */}
+            <Navbar />
             <div className="home-content">
-                {username && <h1>Bem-vindo {username}!</h1>}  {/* Exibe o nome do usuário */}
+                {username && <h1>Bem-vindo, {username}!</h1>}
                 <p>Aqui você pode gerenciar suas finanças.</p>
-                {/* Adicione mais seções ou informações conforme necessário */}
+
+                <div className="categorias-section">
+                    <CategoriaList tipo="RECEITA" />
+                    <CategoriaList tipo="DESPESA" />
+                </div>
             </div>
         </div>
     );

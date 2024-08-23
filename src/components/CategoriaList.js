@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CategoriaList.css';
+import LoadingSpinner from '../components/LoadingSpinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function CategoriaList({ tipo }) {
@@ -8,6 +8,7 @@ function CategoriaList({ tipo }) {
     const [size] = useState(5);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchCategorias = async () => {
@@ -26,10 +27,10 @@ function CategoriaList({ tipo }) {
                     setCategorias(data.content);
                     setTotalPages(data.totalPages);
                 } else {
-                    console.error('Erro ao buscar categorias');
+                    setError('Erro ao buscar categorias');
                 }
             } catch (error) {
-                console.error('Erro ao conectar ao servidor:', error);
+                setError('Erro ao conectar ao servidor');
             } finally {
                 setLoading(false);
             }
@@ -48,7 +49,7 @@ function CategoriaList({ tipo }) {
             pageNumbers.push(
                 <button
                     key={i}
-                    className={`page-number ${i === page ? 'active' : ''}`}
+                    className={`btn btn-primary m-1 ${i === page ? 'active' : ''}`}
                     onClick={() => handlePageClick(i)}
                 >
                     {i + 1}
@@ -62,19 +63,25 @@ function CategoriaList({ tipo }) {
         <div className="categoria-list">
             <h3>Categorias de {tipo}</h3>
             {loading ? (
-                <div className="loading">
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="sr-only"></span>
-                    </div>
-                </div>
+                <LoadingSpinner />
+            ) : error ? (
+                <p className="text-danger">{error}</p>
             ) : (
                 <>
-                    <ul>
-                        {categorias.map(categoria => (
-                            <li key={categoria.id}>{categoria.nome}</li>
-                        ))}
-                    </ul>
-                    <div className="pagination-controls">
+                    {categorias.length > 0 ? (
+                        <table className="table table-striped table-responsive">
+                            <tbody>
+                            {categorias.map(categoria => (
+                                <tr key={categoria.id}>
+                                    <td>{categoria.nome}</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>Nenhuma categoria disponível.</p>
+                    )}
+                    <div className="pagination-controls d-flex justify-content-center mt-3">
                         {renderPageNumbers()}
                     </div>
                 </>

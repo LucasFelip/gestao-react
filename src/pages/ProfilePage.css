@@ -1,0 +1,39 @@
+.profile-content {
+    padding: 20px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.card-body p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}

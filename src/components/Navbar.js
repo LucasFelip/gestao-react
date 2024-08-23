@@ -42,7 +42,12 @@ function Navbar() {
         <nav className="navbar">
             <div className="navbar-container">
                 <ul className="navbar-list">
-                    <li><button onClick={() => handleNavigation('/home')}>Home</button></li>
+                    <li>
+                        <button onClick={() => handleNavigation('/home')}>Home</button>
+                    </li>
+                    <li>
+                        <button onClick={() => handleNavigation('/profile')}>Perfil</button>
+                    </li>
                 </ul>
                 <button onClick={handleLogout} className="logout-button">Logout</button>
             </div>

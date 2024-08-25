@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function CategoriaList({ tipo }) {

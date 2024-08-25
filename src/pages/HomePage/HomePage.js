@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import CategoriaList from '../components/CategoriaList';
+import Navbar from '../../components/Navbar/Navbar';
+import CategoriaList from '../../components/CategoriaList/CategoriaList';
 import './HomePage.css';
 
 function HomePage() {
